@@ -1,0 +1,4 @@
+logzero  # see github.com/metachris/logzero
+PyP100
+pyyaml
+cerberus==1.3.4
