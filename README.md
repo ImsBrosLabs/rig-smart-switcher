@@ -1,6 +1,7 @@
 # Rig smart switcher
 A python script that automatically switches ON/OFF a crypto mining rig depending on the weather and rig temp.
 
+![Project's diagram](diagram.png)
 # TODO's
 - [ ] Look for and test hiveOS API
 - [x] Config file + validation
