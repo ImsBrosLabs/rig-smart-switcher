@@ -17,5 +17,19 @@
                 'type': 'string'
             }
         }
+    },
+    'open_meteo': {
+        'required': True,
+        'type': 'dict',
+        'schema': {
+            'latitude': {
+                'required': True,
+                'type': 'float'
+            },
+            'longitude': {
+                'required': True,
+                'type': 'float'
+            }
+        }
     }
 }

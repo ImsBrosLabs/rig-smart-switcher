@@ -10,6 +10,27 @@ __license__ = "MIT"
 from PyP100 import PyP110
 from config.init_config import config_file as config
 from logzero import logger
+from src.weather_grabber import retrieve_weather
+
+
+def init_p110_object():
+    logger.info("Creating a P110 plug object...")
+    p110 = PyP110.P110(config['p110']['ip'], config['p110']
+                       ['email'], config['p110']['password'])
+    logger.info("...P110 plug object created !")
+
+    logger.info("Creating the cookies required for further methods...")
+    p110.handshake()
+    logger.info("...Cookies created !")
+
+    logger.info(
+        "Sending credentials to the plug and creating AES Key and IV for further methods...")
+    p110.login()
+    logger.info("...Credentials sent.")
+
+    logger.info(p110.getDeviceInfo())
+
+    return p110  # Returns dict with all the energy usage
 
 
 def main():
@@ -19,33 +40,18 @@ def main():
 
     IF smart plug is off and the current temp is below a specified a certain amount
     THEN turn on the smart plug
-
-    #TODO Add an ON/OFF switch that allows to control eithrer the script is ON or OFF.
-    #TODO log EVERYTHING !
     """
 
-    logger.info("Creating a P110 plug object...")
-
-    p110 = PyP110.P110(config['p110']['ip'], config['p110']
-                       ['email'], config['p110']['password'])
-
-    logger.info("...P110 plug object created !")
-
-    logger.info("Creating the cookies required for further methods...")
-    p110.handshake()
-    logger.info("...Cookies created !")
-
-    logger.info("Sending credentials to the plug and creating AES Key and IV for further methods...")
-    p110.login()
-    logger.info("...Credentials sent.")
+    p110 = init_p110_object()
 
     logger.info("Turning ON the p110 smart plug...")
     p110.turnOn()
     logger.info("...P110 is ON !")
-
-    logger.info(p110.getDeviceInfo())  # Returns dict with all the energy usage
-
+    open_meteo_res = retrieve_weather(config['open_meteo']['latitude'],
+                 config['open_meteo']['longitude'])
+    
+    weather_temp = open_meteo_res['current_weather']['temperature']
+    logger.info("Weather temperature retrieved : %s", weather_temp)
 
 if __name__ == "__main__":
-    """ This is executed when run from the command line """
     main()

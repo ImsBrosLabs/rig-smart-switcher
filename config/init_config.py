@@ -12,7 +12,7 @@ def load_config_file():
         except yaml.YAMLError as exception:
             raise exception
 
-# Now, validating the yaml file is straightforward:
+# Validating the config.yml with the schema defined in config_schema.py
 schema = eval(open(os.path.join(BASE_DIR, 'config_schema.py'), 'r').read())
 
 v = Validator(schema)
