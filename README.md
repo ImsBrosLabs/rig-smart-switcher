@@ -5,7 +5,8 @@ A python script that automatically switches ON/OFF a crypto mining rig depending
 
 ## TODO's
 - [x] Find an API wrapper for communicating with the P110 smart plug.
-- [ ] ~~Look for and test hiveOS API~~ => use a SSH client like [paramiko](https://docs.paramiko.org/en/stable/api/client.html) to perform this.
+- [x] ~~Look for and test hiveOS API~~ => use a SSH client like [paramiko](https://docs.paramiko.org/en/stable/api/client.html) to perform this.
+  - [ ] `lm-sensors` should be installed (add to requirements in this README file).
 - [x] Find a weather API => [Open-Meteo](https://open-meteo.com/en).
 
 ## Improvements

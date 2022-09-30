@@ -28,8 +28,6 @@ def init_p110_object():
     p110.login()
     logger.info("...Credentials sent.")
 
-    logger.info(p110.getDeviceInfo())
-
     return p110  # Returns dict with all the energy usage
 
 
@@ -47,6 +45,7 @@ def main():
     logger.info("Turning ON the p110 smart plug...")
     p110.turnOn()
     logger.info("...P110 is ON !")
+    logger.info(p110.getDeviceInfo())
     open_meteo_res = retrieve_weather(config['open_meteo']['latitude'],
                  config['open_meteo']['longitude'])
     

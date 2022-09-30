@@ -31,5 +31,23 @@
                 'type': 'float'
             }
         }
+    },
+    'rig_ssh_creds': {
+        'required': True,
+        'type': 'dict',
+        'schema': {
+            'host': {
+                'required': True,
+                'type': 'string'
+            },
+            'username': {
+                'required': True,
+                'type': 'string'
+            },
+            'password': {
+                'required': True,
+                'type': 'string'
+            }
+        }
     }
 }

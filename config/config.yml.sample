@@ -6,3 +6,6 @@ open_meteo:
   # Coordinates of the location for which the weather informations are searched.
   latitude:
   longitude:
+rig_ssh_creds:
+  username: ''
+  password: ''
